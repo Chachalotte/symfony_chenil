@@ -5,9 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\AnimalRepository;
-use App\Entity\Animal;
-
 use Doctrine\Persistence\ManagerRegistry;
 
 class AdopterController extends AbstractController
@@ -19,8 +16,9 @@ class AdopterController extends AbstractController
 
         $animal = $animals->findAll();
 
+     
         return $this->render('adopter/index.html.twig', [
-            'animal' => $animal,
+            'animal' => $animal
         ]);
     }
 

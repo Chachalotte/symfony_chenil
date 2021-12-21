@@ -6,17 +6,21 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
-   {% for message in app.flashes('success') %}
+    {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }} 
             </div>
     {% endfor %}
-   <p>Faire un don</p>
-   {{ form_start(form) }}
+
+    <h2>Total des dons : {{ dons }}</h2>
+    <p>Faire un don</p>
+    {% if is_granted('ROLE_USER') %}
+    {{ form_start(form) }}
         {{ form_row(form.Total) }}
 
         <button type="submit" class="btn">Faire un don</button>
     {{ form_end(form) }}
+    {% endif %}
 
 </div>
 {% endblock %}

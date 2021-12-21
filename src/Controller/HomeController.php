@@ -7,24 +7,41 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Persistence\ManagerRegistry;
 use App\Form\DonType;
 use App\Entity\Don;
+use App\Entity\User;
+use App\Entity\Animal;
+
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(Security $security, EntityManagerInterface $entityManager): Response
+    public function index(Security $security, EntityManagerInterface $entityManager, Request $request, ManagerRegistry $doctrine): Response
     {
-        $user = $security->getUser();
-        $don = new Don();
-        $form = $this->createForm(DonType::class, $don);
+        $user = $this->getUser();
 
+        if (!empty($user)){
+            $userId = $doctrine->getRepository(User::class)->find($user->getId());
+        }
+        $don = new Don();
+        $form = $this->createForm(DonType::class);
+        $form->handleRequest($request);
+
+        //Addition de tous les dons pour afficher le total des dons
+        $qb = $entityManager->createQueryBuilder();
+        $qb = $qb
+        ->select( 'SUM(e.Total) as totalRevenue' )
+        ->from( 'App\Entity\Don', 'e' )
+        ->getQuery();
+
+        $dons = $qb->getOneOrNullResult();
+
+        //Si le formulaire de don est validé, l'utilisateur envoie un don
         if ($form->isSubmitted() && $form->isValid()) {
             
-            // encode the plain password
             $don->setTotal($form->get('Total')->getData());
-            $don->setUser($user('id'));
-            var_dump($user);
+            $don->setUser($userId);
 
             $entityManager->persist($don);
             $entityManager->flush();
@@ -38,7 +55,8 @@ class HomeController extends AbstractController
         return $this->renderForm('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'form' => $form,
-            'user' => $user
+            'user' => $user, 
+            'dons' => $dons['totalRevenue']
         ]);
     }
 }
