@@ -52,6 +52,11 @@ class Animal
      */
     private $Date;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $Genre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,18 @@ class Animal
     public function setDate(\DateTimeInterface $Date): self
     {
         $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->Genre;
+    }
+
+    public function setGenre(string $Genre): self
+    {
+        $this->Genre = $Genre;
 
         return $this;
     }
