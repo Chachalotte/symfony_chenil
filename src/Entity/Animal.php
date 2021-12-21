@@ -47,6 +47,11 @@ class Animal
      */
     private $Img;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $Date;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Animal
     public function setImg(string $Img): self
     {
         $this->Img = $Img;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->Date;
+    }
+
+    public function setDate(\DateTimeInterface $Date): self
+    {
+        $this->Date = $Date;
 
         return $this;
     }
