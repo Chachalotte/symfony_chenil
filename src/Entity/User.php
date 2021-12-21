@@ -50,9 +50,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $commandes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Don::class, mappedBy="User")
+     */
+    private $dons;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->dons = new ArrayCollection();
     }
 
 
@@ -162,6 +168,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($commande->getUser() === $this) {
                 $commande->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Don[]
+     */
+    public function getDons(): Collection
+    {
+        return $this->dons;
+    }
+
+    public function addDon(Don $don): self
+    {
+        if (!$this->dons->contains($don)) {
+            $this->dons[] = $don;
+            $don->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDon(Don $don): self
+    {
+        if ($this->dons->removeElement($don)) {
+            // set the owning side to null (unless already changed)
+            if ($don->getUser() === $this) {
+                $don->setUser(null);
             }
         }
 
