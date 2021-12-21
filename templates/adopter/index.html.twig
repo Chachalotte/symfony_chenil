@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdopterController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>Adopter un animal</h1>
+
+    {% for animals in animal %}
+
+    <div>
+        <li>Nom : {{ animals.nom}}</li>
+        <li>Race : {{ animals.race}}</li>
+        <li>Taille : {{ animals.taille}} m</li>
+        <li>Description : {{ animals.description}}</li>
+        <li>{{ animals.age}}</li>
+        <li>Date : {{ animals.age}}</li>
+        <li>Genre : {{ animals.age}}</li>
+        <a href="{{ path('app_animal_select', {'id': animals.id}) }}">Voir cet animal plus en détail</a>
+
+    <div>
+    <br/> 
+    <br/>
+    <br/>
+
+    {% endfor %}
+</div>
+{% endblock %}

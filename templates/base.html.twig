@@ -18,8 +18,12 @@
         {% block header %}
         <header>
             <nav>
+                {# Si l'utilisateur est connecté, alors on n'affiche pas la connexion ou l'inscription. #}
                 {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('home') }}">Accueil</a>
+                <a href="{{ path('app_adopter') }}">Adopter un animal</a>
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
+            
                 {% else  %}
                 <a href="{{ path('app_register') }}">Inscription</a>
                 <a href="{{ path('login') }}">Connexion</a>

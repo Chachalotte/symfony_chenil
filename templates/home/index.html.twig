@@ -8,9 +8,15 @@
     <h1>Hello {{ controller_name }}! ✅</h1>
    {% for message in app.flashes('success') %}
             <div class="alert alert-success">
-                {{ message }}
+                {{ message }} 
             </div>
-        {% endfor %}
-   
+    {% endfor %}
+   <p>Faire un don</p>
+   {{ form_start(form) }}{{ user.id }}
+        {{ form_row(form.Total) }}
+
+        <button type="submit" class="btn">Faire un don</button>
+    {{ form_end(form) }}
+
 </div>
 {% endblock %}
