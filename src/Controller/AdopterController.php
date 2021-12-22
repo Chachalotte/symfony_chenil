@@ -14,10 +14,8 @@ class AdopterController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
         $animals = $doctrine->getRepository(Animal::class);
-
         $animal = $animals->findAll();
 
-     
         return $this->render('adopter/index.html.twig', [
             'animal' => $animal
         ]);

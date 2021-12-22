@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="example-wrapper">
+   {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }} 
+            </div>
+    {% endfor %}
+    {{ form_start(form) }}
+        {{ form_row(form.cni) }}
+        {{ form_row(form.pdf) }}
+
+        <button type="submit" class="btn">Envoyer mes documents</button>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

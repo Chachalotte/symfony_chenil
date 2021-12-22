@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
@@ -42,7 +41,6 @@ class HomeController extends AbstractController
             
             $don->setTotal($form->get('Total')->getData());
             $don->setUser($userId);
-
             $entityManager->persist($don);
             $entityManager->flush();
 
@@ -53,7 +51,6 @@ class HomeController extends AbstractController
         }
 
         return $this->renderForm('home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'form' => $form,
             'user' => $user, 
             'dons' => $dons['totalRevenue']

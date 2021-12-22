@@ -19,8 +19,7 @@ class Dossier
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="dons")
      */
     private $User;
 
@@ -38,6 +37,21 @@ class Dossier
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isValid;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $privateId;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $statut;
 
     public function getId(): ?int
     {
@@ -88,6 +102,42 @@ class Dossier
     public function setIsValid(bool $isValid): self
     {
         $this->isValid = $isValid;
+
+        return $this;
+    }
+
+    public function getPrivateId(): ?string
+    {
+        return $this->privateId;
+    }
+
+    public function setPrivateId(string $privateId): self
+    {
+        $this->privateId = $privateId;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

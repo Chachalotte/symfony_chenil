@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="example-wrapper">
+   {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }} 
+            </div>
+    {% endfor %}
+    <h1>Liste des dossiers</h1>
+
+    {% for dossier in dossiers %}
+
+    <div>
+        <li>Nom : {{ dossier.email}}</li>
+        <a href="{{ path('folderEmail', {'id': dossier.id}) }}">Envoyer un email à cet utilisateur</a>
+    <div>
+    <br/> 
+    <br/>
+    <br/>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

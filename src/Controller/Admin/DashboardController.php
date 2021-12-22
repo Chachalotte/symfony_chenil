@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Animal;
 use App\Entity\Dossier;
+use App\Entity\Contact;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -19,7 +20,6 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         return $this->render('@EasyAdmin/page/content.html.twig');
-
     }
 
     public function configureDashboard(): Dashboard
@@ -32,7 +32,8 @@ class DashboardController extends AbstractDashboardController
     {
         return [
 
-            
+            MenuItem::section('Contact'),
+            MenuItem::linkToCrud('Contact', 'fa fa-user', Contact::class),
 
             MenuItem::section('Dossier'),
             MenuItem::linkToCrud('Dossier', 'fa fa-user', Dossier::class),
