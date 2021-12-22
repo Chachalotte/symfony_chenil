@@ -21,10 +21,17 @@ class DossierCrudController extends AbstractCrudController
     {
         return [
             AssociationField::new('User'),
-            Field::new('CNI'),
-            Field::new('PDF'),
-            Field::new('isValid'),
+            // Field::new('CNI'),
+            // Field::new('PDF'),
+            // Field::new('isValid'),
 
         ];
+    }
+
+    public function createEntity(string $entityFqcn)
+    {
+        $dossier = new Dossier();
+
+        return $dossier;
     }
 }

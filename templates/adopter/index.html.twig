@@ -19,7 +19,7 @@
         <li>Date : {{ animals.age}}</li>
         <li>Genre : {{ animals.age}}</li>
         <a href="{{ path('app_animal_select', {'id': animals.id}) }}">Voir cet animal plus en détail</a>
-
+        <img src="{{asset('uploads/' ~ animals.img ~'') }}">
     <div>
     <br/> 
     <br/>

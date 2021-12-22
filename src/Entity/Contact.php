@@ -18,11 +18,6 @@ class Contact
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="contacts")
-     */
-    private $User;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $email;
@@ -35,18 +30,6 @@ class Contact
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->User;
-    }
-
-    public function setUser(?User $User): self
-    {
-        $this->User = $User;
-
-        return $this;
     }
 
     public function getEmail(): ?string
