@@ -1,26 +1,121 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello HomeController!{% endblock %}
-
 {% block body %}
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="main">
     {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }} 
             </div>
     {% endfor %}
+	<div class="titre-barre">
+		<div class="titre">HO HO HO {{ controller_name }}!</div>
+		<div class="barre"></div>
+	</div>
 
-    <h2>Total des dons : {{ dons }}</h2>
-    <p>Faire un don</p>
-    {% if is_granted('ROLE_USER') %}
-    {{ form_start(form) }}
-        {{ form_row(form.Total) }}
+	<div class="container-services">
+		<div class="image-gauche">
+			<img class="image-container" src="../images/IMAGE3.jpg">
+		</div>
+		<div class="texte-droite">
+			<div class="titre-droite">Présentation</div>
+			<div class="barre"></div>
+			<div class="texte-container">Nous oeuvrons dans le domaine de la protection animale, aidons les animaux en détresse, ensemble.</div>
+		</div>
+	</div>
 
-        <button type="submit" class="btn">Faire un don</button>
-    {{ form_end(form) }}
-    {% endif %}
+	<div class="container-services-bis">
+		<div class="image-gauche-bis">
+			<img class="image-container-bis" src="../images/IMAGE1.jpg">
+		</div>
+		<div class="texte-droite-bis">
+			<div class="titre-gauche">L'ADOPTION RESPONSABLE</div>
+			<div class="barre"></div>
+			<div class="texte-container-bis">L'adoption change autant la vie de l'animal que la vôtre, offrez leur la vie qu'ils méritent !</div>
+		</div>
+	</div>
+
+    <div class="financement">
+		<div class="titre-financement">DONNONS-LEUR AUTANT QU'ILS NOUS APPORTENT</div>
+		<div class="icones">
+		<div class="icones-gauche">
+			<img src="../images/star-solid.svg">
+			<img src="../images/star-solid.svg">
+			<img src="../images/star-solid.svg">
+		</div>
+			<img src="../images/gift-solid.svg" style="width: 75px; margin-top: 55px;">
+		<div class="icones-droite">
+			<img src="../images/star-solid.svg">
+			<img src="../images/star-solid.svg">
+			<img src="../images/star-solid.svg">
+		</div>
+		</div>
+		<div class="sous-titre">Pour toutes les fois où ils nous ont sauvé la mise et nous ont apporté tendresse, joie, réconfort.
+		Parce qu'ils méritent tant, donnons-leur autant qu'ils nous apportent !</div>
+
+		<div class="bloc">
+		<div class="container-financement">
+			<img class="image-financement" src="">
+			<div class="image-titre">J'adopte</div>
+			<div class="barre-financement"></div>
+			<div class="texte-financement">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+			<button class="boutons">ADOPTION</button>
+		</div>
+
+		<div class="container-financement">
+			<img class="image-financement" src="">
+			<div class="image-titre">Je donne</div>
+			<div class="barre-financement"></div>
+			<div class="texte-financement">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+			<div class="dons">
+				<button class="boutons">{{ dons }} €</button>
+                {% if is_granted('ROLE_USER') %}
+                {{ form_start(form) }}
+                    {{ form_row(form.Total) }}
+
+                    <button type="submit" class="btn">Faire un don</button>
+                {{ form_end(form) }}
+                {% endif %}
+				<div class="total"></div>
+			</div>
+		</div>
+
+		<div class="container-financement">
+			<img class="image-financement" src="">
+			<div class="image-titre">Je m'équipe</div>
+			<div class="barre-financement"></div>
+			<div class="texte-financement">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+			<button class="boutons">BOUTIQUE</button>
+		</div>
+		</div>
+	</div>
+
+	<div class="container-services">
+		<div class="image-gauche">
+			<img class="image-container" src="../images/IMAGE4.jpg">
+		</div>
+		<div class="texte-droite">
+			<div class="titre-droite">L'ANIMALERIE EN LIGNE</div>
+			<div class="barre"></div>
+			<div class="texte-container">De l'alimentation aux produits de santé et d'hygiène, nous proposons les meilleures marques.</div>
+		</div>
+	</div>
+
+	<div class="container-services-bis">
+		<div class="image-gauche-bis">
+			<img class="image-container-bis" src="../images/IMAGE2.jpg">
+		</div>
+		<div class="texte-droite-bis">
+			<div class="titre-gauche">SOUTENIR LA CAUSE</div>
+			<div class="barre"></div>
+			<div class="texte-container-bis">Nous agissons sur tous les fronts, votre générosité est si essentielle aux animaux !</div>
+		</div>
+	</div>
+    
+</div>{# Attention fermeture balise main #}
+
+<div class="animaux-liste">
 
 </div>
+
+
+
 {% endblock %}

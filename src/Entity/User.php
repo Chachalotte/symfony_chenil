@@ -58,10 +58,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $dons;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Contact::class, mappedBy="User")
+     */
+    private $contacts;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
         $this->dons = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
 
@@ -201,6 +207,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($don->getUser() === $this) {
                 $don->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contact[]
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+            $contact->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getUser() === $this) {
+                $contact->setUser(null);
             }
         }
 

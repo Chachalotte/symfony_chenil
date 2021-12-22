@@ -17,7 +17,7 @@ use App\Entity\Animal;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(Security $security, EntityManagerInterface $entityManager, Request $request, ManagerRegistry $doctrine): Response
+    public function index(EntityManagerInterface $entityManager, Request $request, ManagerRegistry $doctrine): Response
     {
         $user = $this->getUser();
 

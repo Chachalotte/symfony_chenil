@@ -1,3 +1,267 @@
+.alert, .alert-sucess, .alert-danger {
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: red;
+}
+
 body {
-    background: green;
+    padding-top: 10vh;
+
+}
+
+.main {
+
+    background-image: url('../images/BG.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 50px;
+}
+
+.titre-barre {
+    display: flex;
+    padding-top: 65px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titre {
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.barre {
+    width: 110px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #1ec7cc;
+}
+
+.container-services {
+    margin: auto;
+    display: flex;
+    max-width: 1800px;
+    margin-top: 100px;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.container-services-bis {
+    margin: auto;
+    display: flex;
+    max-width: 1800px;
+    align-items: center;
+    margin-bottom: 100px;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+.linear-image{
+    z-index: 2;
+    width: 40px;
+    height: 467px;
+    position: absolute;
+    background: linear-gradient(90deg, #F5624D, #CC231E);
+}
+
+.image-container {
+    z-index: 1;
+    width: 700px;
+    position: relative;
+    box-shadow: 0px 0px 10px 10px #CC231E;
+}
+
+.image-container-bis {
+    z-index: 1;
+    width: 700px;
+    position: relative;
+    box-shadow: 0px 0px 10px 10px #F5624D;
+}
+
+.texte-droite {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.texte-droite-bis {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.texte-container {
+    width: 90%;
+    color: white;
+    text-align: end;
+    font-size: 30px;
+    font-family: cursive;
+}
+
+.texte-container-bis {
+    width: 90%;
+    color: white;
+    font-size: 30px;
+    text-align: start;
+    font-family: cursive;
+}
+
+.image-gauche {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.image-gauche-bis {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.titre-gauche {
+    color: white;
+    font-size: 50px;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.titre-droite {
+    color: white;
+    font-size: 50px;
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.financement {
+    width: 75%;
+    margin: auto;
+    height: 770px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px 5px black;
+    background: radial-gradient(ellipse at center, #F5624D, #CC231E);
+}
+
+.titre-financement {
+    color: #c7cc1e;
+    margin-top: 55px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+    justify-content: center;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.sous-titre {
+    width: 75%;
+    color: white;
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 75px;
+    font-family: cursive;
+}
+
+.bloc {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.container-financement {
+    width: 33%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-financement {
+    width: 15%;
+}
+
+.image-titre {
+    color: #1ec7cc;
+    margin-top: 20px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-bottom: 35px;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.barre-financement {
+    width: 123px;
+    margin-bottom: 35px;
+    border: 2px solid #c7cc1e;
+}
+
+.texte-financement {
+    width: 75%;
+    color: white;
+    font-size: 1.5rem;
+    font-family: cursive;
+}
+
+.dons {
+    display: flex;
+    align-items: center;
+}
+
+.boutons {
+    border: 0;
+    width: 150px;
+    padding: 10px;
+    color: white;
+    font-size: 17px;
+    margin-top: 30px;
+    transition: 0.2s;
+    border-radius: 30px;
+    font-family: cursive;
+    background: linear-gradient(90deg, #1ec7cc, #1ecc23);
+}
+
+.boutons:hover {
+    font-weight: bold;
+    box-shadow: 0px 0px 10px 3px white;
+}
+
+.total {
+
+}
+
+.icones {
+    display: flex;
+}
+
+.icones-gauche {
+    width: 500px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.icones-droite {
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icones img {
+    width: 50px;
+    margin-bottom: 30px;
 }
