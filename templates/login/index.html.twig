@@ -5,7 +5,7 @@
  
 
 <div class="container">
-    {% for message in app.flashes('success') %}
+     {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }} 
             </div>
@@ -26,16 +26,28 @@
                     <h3>Se connecter</h3>
                     <input type="text" id="username" name="_username" placeholder="Nom d'utilisateur" value="{{ last_username }}">
                     <input type="password" id="password" name="_password" placeholder="Mot de passe">
-                    <input type="submit" value="Se connecter">
+                    <input type="submit" value="Connexion">
                     <a href="#" class="forgot">Oublie de mot de passe ?</a>
                 </form>
+            </div>
+
+            <div class="form signupForm">
+                {{ form_start(registrationForm, {
+                        'action': path('app_register')
+                    }) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                    <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm) }}
             </div>
         </div>
     </div>
 
     <script>
         const signinBtn = document.querySelector('.signinBtn');
-        const signinBtn = document.querySelector('.signupBtn');
+        const signupBtn = document.querySelector('.signupBtn');
         const formBx = document.querySelector('.formBx');
         const body = document.querySelector('body');
         signupBtn.onclick = function() {

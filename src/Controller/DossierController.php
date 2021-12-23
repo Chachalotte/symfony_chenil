@@ -28,6 +28,7 @@ class DossierController extends AbstractController
     public function folderList(ManagerRegistry $doctrine): Response
     {
 
+        //On retourne l'ensemble des dossiers
         $dossiers = $doctrine->getRepository(Dossier::class);
         $dossier = $dossiers->findAll();
 
@@ -38,7 +39,7 @@ class DossierController extends AbstractController
     #[Route('/dossier/email/{id}', name: 'folderEmail')]
     public function folderEmail(ManagerRegistry $doctrine, int $id, MailerInterface $mailer): Response
     {
-
+        //On retourne un élément dossier unique grâce au private ID
         $dossier = $doctrine->getRepository(Dossier::class)->findOneBy( ['privateId' => $id]);
     
         $email = (new TemplatedEmail())
@@ -61,9 +62,10 @@ class DossierController extends AbstractController
     #[Route('/dossier/form/{id}', name: 'folderForm')]
     public function folderForm(ManagerRegistry $doctrine, int $id, Request $request, EntityManagerInterface $entityManager): Response
     {
-
+        //On retourne un élément dossier unique grâce au private ID
         $dossier = $doctrine->getRepository(Dossier::class)->findOneBy( ['privateId' => $id]);
 
+        //Le formulaire est modifié grâce au retour du dossier qu'on a retrouvé avec $dossier
         $form = $this->createForm(DossierType::class, $dossier);
         $form->handleRequest($request);
 

@@ -13,6 +13,7 @@ class DossierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            //On place le data class en null pour éviter une erreur avec Symfony
             ->add('cni', FileType::class, ["label" => "Image (JPEG/PNG)", 'data_class' => null])
             ->add('pdf', FileType::class, ["label" => "PDF", 'data_class' => null])
         ;
