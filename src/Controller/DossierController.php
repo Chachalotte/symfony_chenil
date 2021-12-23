@@ -109,4 +109,18 @@ class DossierController extends AbstractController
 
         ]);
     }
+
+    #[Route('/dossier/validate/{id}', name: 'folderValidate')]
+    public function folderValidate(ManagerRegistry $doctrine, int $id, MailerInterface $mailer): Response
+    {
+        //On retourne un élément dossier unique grâce au private ID
+        $dossier = $doctrine->getRepository(Dossier::class)->findOneBy( ['privateId' => $id]);
+        $dossier->setStatut('ACCEPTED');        
+
+
+        $this->addFlash('success', 'Le dossier a bien été validé.');
+
+        return $this->redirectToRoute('dossier');
+
+    }
 }
