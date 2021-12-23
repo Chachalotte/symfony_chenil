@@ -13,16 +13,21 @@
     {% for dossier in dossiers %}
 
     <div>
-        <li>Nom : {{ dossier.email}}</li>
+        <p>Nom : {{ dossier.email}}</p>
+        <p> Élément du dossier :</p>
+        <a href="{{ asset('uploads/' ~ dossier.cni ~ '') }}">CNI<a><br/>
+        <a href="{{ asset('uploads/' ~ dossier.pdf ~ '') }}">PDF adoption<a>
+
+        <p></p>
         {% if dossier.statut is same as("begin") %}
         <a href="{{ path('folderEmail', {'id': dossier.privateId}) }}">Envoyer un email à cet utilisateur</a>
         {% elseif dossier.statut is same as("DONE") %}
         <a href="{{ path('folderValidate', {'id': dossier.privateId}) }}">Valider ce dossier</a>
-        {% elseif dossier.statut is same as("COMPLETE") %}
+        {% elseif dossier.statut is same as("ACCEPTED") %}
         <p>Ce dossier a été validé !</p>
 
         {% endif %}
-
+        
 
     <div>
     <br/> 

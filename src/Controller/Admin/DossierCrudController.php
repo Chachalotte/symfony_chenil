@@ -33,7 +33,11 @@ class DossierCrudController extends AbstractCrudController
             // Field::new('CNI'),
             // Field::new('PDF'),
             Field::new('Email'),
-            Field::new('isValid'),
+            Field::new('cni')->onlyOnIndex(),
+            Field::new('pdf')->onlyOnIndex(),
+            Field::new('privateId')->onlyOnIndex(),
+            Field::new('isValid')->onlyOnIndex(),
+            Field::new('statut')->onlyOnIndex(),
 
         ];
     }

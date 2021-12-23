@@ -19,6 +19,7 @@ nav .brand {
     float: left;
     height: 100%;
     line-height: 70px;
+    color: white;
 }
 
 .nav .brand h2 {

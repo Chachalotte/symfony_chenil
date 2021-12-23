@@ -44,7 +44,7 @@ class DashboardController extends AbstractDashboardController
 
             MenuItem::section('Animal'),
             MenuItem::linkToCrud('Animal', 'fa fa-user', Animal::class),
-            MenuItem::linkToLogout('Logout', 'fa fa-exit'),
+            MenuItem::linkToLogout('Déconnexion', 'fa fa-exit'),
 
         ];
     }

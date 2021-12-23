@@ -45,12 +45,11 @@ class DossierController extends AbstractController
         $email = (new TemplatedEmail())
         ->from(new Address('foyeranimal@gmail.com', 'Foyer Animal'))
         ->to($dossier->getEmail())
-        ->subject('Merci de valider votre email')
+        ->subject('Merci de valider votre dossier')
         ->htmlTemplate('dossier/email.html.twig')
         ->context([
             'privateId' => $dossier->getPrivateId()
-        ])   
-        ;
+        ]);
 
     $mailer->send($email);
 
@@ -111,12 +110,13 @@ class DossierController extends AbstractController
     }
 
     #[Route('/dossier/validate/{id}', name: 'folderValidate')]
-    public function folderValidate(ManagerRegistry $doctrine, int $id, MailerInterface $mailer): Response
+    public function folderValidate(EntityManagerInterface $entityManager, ManagerRegistry $doctrine, int $id, MailerInterface $mailer): Response
     {
         //On retourne un élément dossier unique grâce au private ID
         $dossier = $doctrine->getRepository(Dossier::class)->findOneBy( ['privateId' => $id]);
         $dossier->setStatut('ACCEPTED');        
-
+        $entityManager->persist($dossier);
+        $entityManager->flush();
 
         $this->addFlash('success', 'Le dossier a bien été validé.');
 
