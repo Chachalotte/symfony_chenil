@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+<ul>
+    <h3>Demande de contact </br></h3>
+    
+    </br><div>
+    {% block form %}
+        {{ form_start(ContactForm) }}
+      <li>      {{ form_row(ContactForm.email) }}</li>
+       <li>     {{ form_row(ContactForm.message, {
+                
+            }) }} </li>
+
+      <li>      <button type="submit" class="btn">Envoyer demande</button> </li>
+        {{ form_end(ContactForm) }}
+        
+        </div>
+    {% endblock %}
+    
+    </ul>
+    
+    </br></br></br></br></br></br>
+    <center>Nous étudierons votre demande et vous</br>recontacterons sous les plus brefs délais.</br></br>
+
+    Si l'animal est disponible et votre demande est validée,</br>
+    Vous recevrez un accès au formulaire de</br> complétion du dossier par mail.</center></br></ul>
+    </div>
+{% endblock %}
