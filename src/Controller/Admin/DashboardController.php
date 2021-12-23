@@ -33,7 +33,7 @@ class DashboardController extends AbstractDashboardController
         return [
 
             //On crée la section, càd le titre à gauche et le crud associé à l'entité
-            MenuItem::section('Contact'),
+            MenuItem::section('Liste des demandes d\'adoption'),
             MenuItem::linkToCrud('Contact', 'fa fa-user', Contact::class),
 
             MenuItem::section('Dossier'),

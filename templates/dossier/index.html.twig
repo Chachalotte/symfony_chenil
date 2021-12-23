@@ -14,7 +14,16 @@
 
     <div>
         <li>Nom : {{ dossier.email}}</li>
-        <a href="{{ path('folderEmail', {'id': dossier.id}) }}">Envoyer un email à cet utilisateur</a>
+        {% if dossier.statut is same as("begin") %}
+        <a href="{{ path('folderEmail', {'id': dossier.privateId}) }}">Envoyer un email à cet utilisateur</a>
+        {% elseif dossier.statut is same as("DONE") %}
+        <a href="{{ path('folderValidate', {'id': dossier.privateId}) }}">Valider ce dossier</a>
+        {% elseif dossier.statut is same as("COMPLETE") %}
+        <p>Ce dossier a été validé !</p>
+
+        {% endif %}
+
+
     <div>
     <br/> 
     <br/>

@@ -38,6 +38,7 @@
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
                     <li><a href="{{ path('admin') }}">Administration</a></li>
+                    <li><a href="{{ path('dossier') }}">Dossier</a></li>
                 {% endif %}
                 </ul>
             </nav>
