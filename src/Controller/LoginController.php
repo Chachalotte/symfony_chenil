@@ -14,6 +14,12 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
+
+        $user = $this->getUser();
+
+        if (!empty($user)){
+            return $this->redirectToRoute('home');
+        }
          // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         $form = $this->createForm(RegistrationFormType::class);

@@ -130,188 +130,46 @@
 	</div>
 	</div>
 
-	<div class="display">
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte"  src="{{ asset('images/IMAGE6.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Chachalotte !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-f"src="{{ asset('images/venus-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>
+	{% for  animal in animals %}
+		{% if loop.first %}
+			<div class="display">
+			{# open row #}
+		{% endif %}
+			{# your code here #}
+			<div class="animaux-liste">
+						<div class="carte">
+						<div class="background">
+								<img class="image-carte" src="{{ asset('uploads/' ~ animal.img ~ '') }}">
+								<div class="bienvenue-carte">Bienvenue à {{ animal.nom }} !</div>
+								<div class="barre-carte"></div>
+        						{% if animal.genre is same as("Femelle") %}
+								<img class="sexe-f" src="{{ asset('images/venus-solid.svg') }}">
+								{% elseif animal.genre is same as("Male") %}
+								<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
 
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte"  src="{{ asset('images/IMAGE7.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Keyvin !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m"src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
+								{% endif %}
+									<div class="info-carte">
+									<div class="nom-carte">{{animal.race}}</div>
+									<div class="nom-carte">{{animal.age}} ans</div>
+								</div>
+								<div class="presentation-carte">{{animal.description}}</div>
+								<div class="barre-carte-bas"></div>
+        						<a class="bouton-dons" href="{{ path('app_animal_select', {'id': animal.id}) }}">EN SAVOIR PLUS</a><br>
+						</div>
+						</div>
 			</div>
-			</div>
-		</div>
+			{% if loop.index % 3 == 0 %}
+				{# Après 3 boucles on reforme une div et on sépare les blocs #}
+				</div>
+				<div class="barre-separation"></div>
+				<div class="display">
+			{% endif %}                
+			{% if loop.last %}
+				</div> {# close last row #}
+			{% endif %}
+		{% endfor %}
 
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte" src="{{ asset('images/IMAGE5.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Davidou !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>	
-				<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte" src="{{ asset('images/IMAGE5.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Davidou !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>	
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte" src="{{ asset('images/IMAGE5.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Davidou !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>	
-	</div>
-
-	<div class="barre-separation"></div>
-
-	<div class="display">
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte"  src="{{ asset('images/IMAGE6.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Chachalotte !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-f"src="{{ asset('images/venus-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>
-
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte"  src="{{ asset('images/IMAGE7.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Keyvin !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m"src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>
-
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte" src="{{ asset('images/IMAGE5.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Davidou !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>	
-				<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte" src="{{ asset('images/IMAGE5.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Davidou !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>	
-		<div class="animaux-liste">
-			<div class="carte">
-			<div class="background">
-				<img class="image-carte" src="{{ asset('images/IMAGE5.jpg') }}">
-					<div class="bienvenue-carte">Bienvenue à Davidou !</div>
-					<div class="barre-carte"></div>
-					<img class="sexe-m" src="{{ asset('images/mars-solid.svg') }}">
-					<div class="info-carte">
-						<div class="nom-carte">Race</div>
-						<div class="nom-carte">Age</div>
-					</div>
-					<div class="presentation-carte">Présentation</div>
-					<div class="barre-carte-bas"></div>
-					<button class="bouton-dons" href="">EN SAVOIR PLUS</button>
-			</div>
-			</div>
-		</div>	
-	</div>
-
+	{# FOOTER  #}
 	<div class="footer">
 
         <div class="bloc-footer">

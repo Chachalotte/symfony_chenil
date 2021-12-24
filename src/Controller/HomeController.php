@@ -15,11 +15,20 @@ use App\Entity\Animal;
 
 class HomeController extends AbstractController
 {
+    //=========================================================================================
+    //Page d'accueil qui contient la liste des animaux et le total des dons
+    //=========================================================================================
     #[Route('/', name: 'home')]
     public function index(EntityManagerInterface $entityManager, Request $request, ManagerRegistry $doctrine): Response
     {
-        $user = $this->getUser();
+        //Liste des animaux
+        $animals = $doctrine->getRepository(Animal::class);
+        $animal = $animals->findAll();
 
+        //=========================================================================================
+        //Si l'utilisateur n'est pas connecté, pas de retour d'id de l'utilisateur
+        //=========================================================================================
+        $user = $this->getUser();
         if (!empty($user)){
             $userId = $doctrine->getRepository(User::class)->find($user->getId());
         }
@@ -27,7 +36,9 @@ class HomeController extends AbstractController
         $form = $this->createForm(DonType::class);
         $form->handleRequest($request);
 
-        //Addition de tous les dons pour afficher le total des dons
+        //=========================================================================================
+        //ADDITION DES DONS POUR RETOURNER UN RESULTAT UNIQUE
+        //=========================================================================================        
         $qb = $entityManager->createQueryBuilder();
         $qb = $qb
         ->select( 'SUM(e.Total) as totalRevenue' )
@@ -53,7 +64,8 @@ class HomeController extends AbstractController
         return $this->renderForm('home/index.html.twig', [
             'form' => $form,
             'user' => $user, 
-            'dons' => $dons['totalRevenue']
+            'dons' => $dons['totalRevenue'],
+            'animals' => $animal
         ]);
     }
 }

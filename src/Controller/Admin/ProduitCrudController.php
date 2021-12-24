@@ -2,27 +2,24 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Animal;
+use App\Entity\Produit;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class AnimalCrudController extends AbstractCrudController
+class ProduitCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Animal::class;
+        return Produit::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IntegerField::new('age'),
-            TextField::new('nom'),
-            TextField::new('race'),
-            IntegerField::new('taille'),
+            IntegerField::new('prix'),
+            IntegerField::new('stock'),
             TextField::new('description'),
             //=========================================================================================
             //C'est grâce à ce champ que l'on peut insérer des images dans le dossier "uploads" et retourner le champ de texte en BDD
@@ -33,19 +30,15 @@ class AnimalCrudController extends AbstractCrudController
             // ->setFormType(FileUploadType::class)
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),            
-            TextField::new('genre'),
+            TextField::new('titre'),
+            TextField::new('categorie'),
 
         ];
     }
 
-    //=========================================================================================
-    //On intéragit avec l'entité que l'on va crée pour lui insérer la date actuelle
-    //=========================================================================================
     public function createEntity(string $entityFqcn)
     {
-        $animal = new Animal();
-        $animal->setDate(new \DateTime('@'.strtotime('now')));
-        return $animal;
+        $produit = new Produit();
+        return $produit;
     }
-    
 }

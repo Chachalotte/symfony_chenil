@@ -47,6 +47,7 @@ class DossierController extends AbstractController
         ->to($dossier->getEmail())
         ->subject('Merci de valider votre dossier')
         ->htmlTemplate('dossier/email.html.twig')
+        ->attachFromPath('uploads/animal.pdf')
         ->context([
             'privateId' => $dossier->getPrivateId()
         ]);

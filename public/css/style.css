@@ -1,3 +1,5 @@
+/* - - - - - RESOLUTION 1920 ! - - - - - */
+
 .alert, .alert-sucess, .alert-danger {
     width: 100%;
     color: white;
@@ -7,6 +9,10 @@
 
 body {
     padding-top: 3.5%!important;
+    background-image: url('../images/BG.jpg') !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
 }
 
 .main {
@@ -144,8 +150,8 @@ body {
 .financement {
     width: 75%;
     margin: auto;
-    height: 950px;
     display: flex;
+    height: 1000px;
     align-items: center;
     flex-direction: column;
     box-shadow: 0px 0px 15px 5px black;
@@ -324,6 +330,7 @@ body {
     display: flex;
     margin-top: 175px;
     align-items: center;
+    margin-bottom: 75px;
     justify-content: space-around;
 }
 
@@ -438,7 +445,6 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background: radial-gradient(ellipse at center, #F5624D, #CC231E);
 }
 
 .barre-carte {
@@ -475,6 +481,16 @@ body {
     padding-top: 50px;
     border-bottom: 5px solid #1ec7cc;
 }
+
+.carte-bg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: radial-gradient(ellipse at center, #F5624D, #CC231E);
+}
+
+/* FOOTER */
 
 .footer {
     opacity: 0.9;
@@ -559,4 +575,108 @@ body {
 .image-reseaux:hover {
     transform: scale(1.3);
     transition: transform .1s;
+}
+
+.bloc-animal {
+    background: white;
+}
+
+.bouton-adopter {
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+    transition: 0.2s;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    font-family: cursive;
+    background: #1ec7cc;
+}
+
+.bouton-adopter:hover {
+    transition: 0.2s;
+    box-shadow: 0px 0px 10px 5px white;
+}
+
+.info-animal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.caract-animal {
+    color: white;
+    font-size: 30px;
+    margin-top: 30px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.info-1 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bouton-width {
+    width: 50%;
+}
+
+.display-animaux {
+    display: flex;
+    flex-direction: row;
+}
+
+.titre-adopter {
+    width: 100%;
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 5px;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.barre-animal {
+    width: 110px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    border-bottom: 3px solid #1ec7cc;
+}
+
+.icones-animal-gauche {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icones-animal-gauche img {
+    width: 75px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.icones-animal-droite {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icones-animal-droite img {
+    width: 75px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.barre-adoption {
+    width: 110px;
+    border-bottom: 3px solid #1ec7cc;
+}
+
+.titre-barre-adoption {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

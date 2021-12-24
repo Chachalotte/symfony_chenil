@@ -2,6 +2,7 @@
 
 {% block body %}
 
+
 <div class="example-wrapper">
 
     <div class="icones-adoption">
@@ -11,7 +12,7 @@
             <img src="{{ asset('images/gift-solid.svg') }}">
         </div>
         <div class="titre-barre-adoption">
-        <div class="titre-adopter">ADOPTER UN COMPAGNON</div>
+        <div class="titre-adopter">ACHETER UN PRODUIT</div>
         </div>
         <div class="icones-animal-droite">
             <img src="{{ asset('images/gift-solid.svg') }}">
@@ -20,7 +21,7 @@
         </div>
     </div>
 
-    {% for animals in animal %}
+    {% for prod in produit %}
 
         {% if loop.first %}
         <div class="display-animaux">
@@ -29,28 +30,26 @@
             <div class="animaux-liste">
             <div class="carte">
             <div class="background">
-            <img class="image-carte"  src="{{ asset('uploads/' ~ animals.img ~ '') }}">
+            <img class="image-carte"  src="{{ asset('uploads/' ~ prod.img ~ '') }}">
                 <div class="carte-bg">
-                <div class="bienvenue-carte">Bienvenue à {{ animals.nom}} !</div>
+                <div class="bienvenue-carte">Produit {{ prod.titre}} !</div>
                 <div class="barre-carte"></div>
 
                 <div class="info-animal">
                     <div class="info-1">
-                        <div class="caract-animal">Date : {{ animals.age}}</div>
-                        <div class="caract-animal">Age : {{ animals.age}} ans</div>
-                        <div class="caract-animal">Race : {{ animals.race}}</div>
+                        <div class="caract-animal">Prix : {{ prod.prix}}</div>
+                        <div class="caract-animal">Stock : {{ prod.stock}} </div>
                     </div>
                     <div class="info-1">
-                        <div class="caract-animal">Taille : {{ animals.taille}} m</div>
-                        <div class="caract-animal">Genre : {{ animals.age}}</div>
+                        <div class="caract-animal">Catégorie : {{ prod.categorie}} m</div>
                     </div>
                     <div class="info-1">
-                        <div class="caract-animal">Description : {{ animals.description}}</div>
+                        <div class="caract-animal">Description : {{ prod.description}}</div>
                     </div>
                 </div>
 
                 <div class="barre-carte-bas"></div>
-                <a class="bouton-width" href="{{ path('app_animal_select', {'id': animals.id}) }}"><button class="bouton-adopter" href="">EN SAVOIR PLUS</button></a>
+                <a class="bouton-width" href="{{ path('app_animal_select', {'id': prod.id}) }}"><button class="bouton-adopter" href="">EN SAVOIR PLUS</button></a>
                 </div>
             </div>
             </div>

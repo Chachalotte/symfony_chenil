@@ -4,12 +4,14 @@
 
 
 <div class="example-wrapper">
-    <h1>Page du Panier</h1>
+    <h1>Page de {{ produit.Titre}}</h1>
+
+
     <div>
-        <li>Produit : </li>
-        {% for produit in panierProduits %}
+        <li>Prix : {{ produit.Prix}}</li>
+        <li>Stock : {{ produit.Stock}}</li>
+        <li>Description : {{ produit.Description}}</li>
         <img src="{{ asset('uploads/' ~ produit.Img ~ '')}}" width="50" height="50">
-        {% endfor %}
     <div>
     <br/> 
     <br/>

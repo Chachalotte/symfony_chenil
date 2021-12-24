@@ -13,6 +13,7 @@ use App\Entity\User;
 use App\Entity\Animal;
 use App\Entity\Dossier;
 use App\Entity\Contact;
+use App\Entity\Produit;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -32,7 +33,9 @@ class DashboardController extends AbstractDashboardController
     {
         return [
 
-            //On crée la section, càd le titre à gauche et le crud associé à l'entité
+            //=========================================================================================
+            //Sections à gauche du menu admin
+            //=========================================================================================            
             MenuItem::section('Liste des demandes d\'adoption'),
             MenuItem::linkToCrud('Contact', 'fa fa-user', Contact::class),
 
@@ -44,6 +47,9 @@ class DashboardController extends AbstractDashboardController
 
             MenuItem::section('Animal'),
             MenuItem::linkToCrud('Animal', 'fa fa-user', Animal::class),
+
+            MenuItem::section('Produit'),
+            MenuItem::linkToCrud('Produit', 'fa fa-user', Produit::class),
             MenuItem::linkToLogout('Déconnexion', 'fa fa-exit'),
 
         ];

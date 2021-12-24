@@ -16,9 +16,11 @@ class AppFixtures extends Fixture
      for ($i = 0; $i < 20; $i++) {
             $date = new \DateTime('@'.strtotime('now'));
             $rand = ['Maine Coon', 'Persan', 'Bengal'][rand(0,2)];
+            $nom = ['Chat stylé', 'Chien stylé', 'Hamster stylé'][rand(0,2)];
+
             $animal = new Animal();
             $animal->setAge(mt_rand(1, 20));
-            $animal->setNom('Animal ', strval($i));
+            $animal->setNom($nom);
             $animal->setRace($rand);
             $animal->setTaille(mt_rand(10, 30));
             $animal->setDescription('Lorem Ipsum');
